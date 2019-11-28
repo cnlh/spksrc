@@ -1,4 +1,4 @@
-# spksrc-npc
+spksrc-npc
 
 Setup Development Environment
 -----------------------------
@@ -12,11 +12,11 @@ Docker
 
 Build Npc
 -------
-* ```cd spksrc```
+* ``cd spksrc``
 
-* ```make setup```
+* ``make setup``
 
-* ```cd spksrc/spk/npc```
+* ``cd spksrc/spk/npc``
 
-* ```make```
+* ``make``
 
