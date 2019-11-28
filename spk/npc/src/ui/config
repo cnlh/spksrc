@@ -1,0 +1,17 @@
+{
+    ".url": {
+        "SYNO.SDS.Npc.Application": {
+            "type": "legacy",
+            "allUsers": false,
+            "allowMultiInstance": false,
+            "title": "nps内网穿透客户端",
+            "desc": "app:description",
+            "icon": "images/npc-{0}.png",
+            "appWindow": "SYNO.SDS.Npc.Application",
+            "texts": "texts",
+            "width": 800,
+            "height": 600,
+            "url": "/webman/3rdparty/npc/index.cgi"
+        }
+    }
+}

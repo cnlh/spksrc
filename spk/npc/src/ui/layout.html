@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Title}}</title>
+</head>
+<body>
+<style>
+    input {
+        border: 1px solid #ccc;
+        padding: 7px 0px;
+        border-radius: 3px;
+        padding-left: 5px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+    }
+
+    input:focus {
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+    }
+
+    button { /* 按钮美化 */
+        width: 80px; /* 宽度 */
+        height: 30px; /* 高度 */
+        border-width: 0px; /* 边框宽度 */
+        border-radius: 3px; /* 边框半径 */
+        background: #1E90FF; /* 背景颜色 */
+        cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+        outline: none; /* 不显示轮廓线 */
+        font-family: Microsoft YaHei; /* 设置字体 */
+        color: white; /* 字体颜色 */
+        font-size: 17px; /* 字体大小 */
+    }
+
+    button:hover { /* 鼠标移入按钮范围时改变颜色 */
+        background: #5599FF;
+    }
+
+    #a {
+        width: 600px;
+        height: 300px;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        margin: auto;
+    }
+
+    .shortselect {
+        /*background:#fafdfe;*/
+        height: 28px;
+        width: 50px;
+        line-height: 28px;
+        border: 1px solid #9bc0dd;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .des {
+        color: gray;
+        margin-bottom: 30px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+</style>
+<div id="a" class="center">
+    <div class="center">
+        <img src="data:image/png;base64,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"
+             alt="">
+    </div>
+    <div class="center des">
+        <p><a href="//github.com/cnlh/nps" target="_blank">nps</a>内网穿透客户端</p>
+    </div>
+    服务器地址：<input type="text" value="{{.Server}}" id="server">
+    连接密钥：<input type="password" value="{{.Vkey}}" id="vkey"><br><br>
+    连接方式：
+    <select class="shortselect" id="type">
+        <option {{if eq "tcp" .Tp}}selected{{end}} value="tcp">tcp</option>
+        <option {{if eq "kcp" .Tp}}selected{{end}} value="kcp">kcp</option>
+    </select>
+    <br><br>
+    <div class="center">
+        <button onclick="start()">保存</button>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    function start() {
+        var oStr = '';
+        var postData = {};
+        var oAjax = null;
+        //post提交的数据
+        postData = {
+            "server": document.getElementById("server").value,
+            "vkey": document.getElementById("vkey").value,
+            "type": document.getElementById("type").value
+        };
+        //这里需要将json数据转成post能够进行提交的字符串  name1=value1&name2=value2格式
+        postData = (function (value) {
+            for (var key in value) {
+                oStr += key + "=" + value[key] + "&";
+            }
+            ;
+            return oStr;
+        }(postData));
+        //这里进行HTTP请求
+        try {
+            oAjax = new XMLHttpRequest();
+        } catch (e) {
+            oAjax = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        ;
+        //post方式打开文件
+        oAjax.open('post', window.location, true);
+        //post相比get方式提交多了个这个
+        oAjax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //post发送数据
+        oAjax.send(postData);
+        oAjax.onreadystatechange = function () {
+            //当状态为4的时候，执行以下操作
+            if (oAjax.readyState == 4) {
+                try {
+                    alert(oAjax.responseText);
+                } catch (e) {
+                    alert('你访问的页面出错了');
+                }
+                ;
+            }
+            ;
+        };
+    }
+</script>
