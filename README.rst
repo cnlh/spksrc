@@ -1,58 +1,22 @@
-spksrc
-======
-spksrc is a cross compilation framework intended to compile and package software for Synology NAS devices. Packages are made available via the `SynoCommunity repository`_.
-
-
-Contributing
-------------
-Before opening a new issue, check the `FAQ`_ and search open issues.
-If you can't find an answer, or if you want to open a package request, read `CONTRIBUTING`_ to make sure you include all the information needed for contributors to handle your request.
-
+# spksrc-npc
 
 Setup Development Environment
 -----------------------------
 Docker
-^^^^^^
-* Fork and clone spksrc: ``git clone https://You@github.com/You/spksrc.git ~/spksrc``
+
+* Fork and clone spksrc: ``git clone https://github.com/cnlh/spksrc.git ~/spksrc``
 * Install Docker on your host OS: `Docker installation`_. A wget-based alternative for linux: `Install Docker with wget`_.
 * Download the spksrc docker container: ``docker pull synocommunity/spksrc``
 * Run the container with ``docker run -it -v ~/spksrc:/spksrc synocommunity/spksrc /bin/bash``
 
 
-Virtual machine
-^^^^^^^^^^^^^^^
-A virtual machine based on an 64-bit version of Debian 10 stable OS is recommended. Non-x86 architectures are not supported.
-
-* Install the requirements (in sync with Dockerfile)::
-
-    sudo dpkg --add-architecture i386 && sudo apt-get update
-    sudo apt install autogen automake bc bison build-essential check cmake curl cython debootstrap expect flex g++-multilib gettext git gperf imagemagick intltool libbz2-dev libc6-i386 libcppunit-dev libffi-dev libgc-dev libgmp3-dev libltdl-dev libmount-dev libncurses-dev libpcre3-dev libssl-dev libtool libunistring-dev lzip mercurial ncurses-dev php pkg-config python3 python3-distutils scons subversion swig unzip xmlto zlib1g-dev
-    sudo pip install -U setuptools pip wheel httpie
-
-* You may need to install some packages from testing like autoconf. Read about Apt-Pinning to know how to do that.
-* Some older toolchains may require 32-bit development versions of packages, e.g. `zlib1g-dev:i386`
-
-
 Build Npc
 -------
-```
-cd spksrc/spk/npc
-```
+* ```cd spksrc```
 
-```
-make
-```
+* ```make setup```
 
-License
--------
-When not explicitly set, files are placed under a `3 clause BSD license`_
+* ```cd spksrc/spk/npc```
 
+* ```make```
 
-.. _3 clause BSD license: http://www.opensource.org/licenses/BSD-3-Clause
-.. _bug tracker: https://github.com/SynoCommunity/spksrc/issues
-.. _CONTRIBUTING: https://github.com/SynoCommunity/spksrc/blob/master/CONTRIBUTING.md
-.. _Developers HOW TO: https://github.com/SynoCommunity/spksrc/wiki/Developers-HOW-TO
-.. _Docker installation: https://docs.docker.com/engine/installation
-.. _FAQ: https://github.com/SynoCommunity/spksrc/wiki/Frequently-Asked-Questions
-.. _Install Docker with wget: https://docs.docker.com/linux/step_one
-.. _SynoCommunity repository: http://www.synocommunity.com
