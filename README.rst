@@ -37,8 +37,8 @@ Build Npc
 -------
 ``
 cd spksrc/spk/npc
-
 ``
+
 ``
 make
 ``
