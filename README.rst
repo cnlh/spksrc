@@ -33,19 +33,14 @@ A virtual machine based on an 64-bit version of Debian 10 stable OS is recommend
 * Some older toolchains may require 32-bit development versions of packages, e.g. `zlib1g-dev:i386`
 
 
-Usage
------
-Once you have a development environment set up, you can start building packages, create new ones, or improve upon existing packages while making your changes available to other people.
-See the `Developers HOW TO`_ for information on how to use spksrc.
-
-
-Donate
-------
-To support SynoCommunity, you can make a donation to its founder
-
-  .. image:: https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif
-    :target: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F6GDE5APQ4SBN
-
+Build Npc
+-------
+```
+cd spksrc/spk/npc
+```
+```
+make
+```
 
 License
 -------
