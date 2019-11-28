@@ -35,12 +35,13 @@ A virtual machine based on an 64-bit version of Debian 10 stable OS is recommend
 
 Build Npc
 -------
-```
+``
 cd spksrc/spk/npc
-```
-```
+
+``
+``
 make
-```
+``
 
 License
 -------
