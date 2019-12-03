@@ -1,5 +1,5 @@
 SPK_NAME = npc
-SPK_VERS = 0.24.0
+SPK_VERS = $(VERSION)
 SPK_REV = 1
 SPK_ICON = src/npc.png
 

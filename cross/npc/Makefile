@@ -1,5 +1,5 @@
 PKG_NAME = npc
-PKG_VERS = 0.24.0
+PKG_VERS = $(VERSION)
 PKG_EXT = tar.gz
 PKG_DIST_SITE = https://github.com/cnlh/nps/archive
 PKG_DIST_NAME = v$(PKG_VERS).$(PKG_EXT)
