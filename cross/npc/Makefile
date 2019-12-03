@@ -1,5 +1,5 @@
 PKG_NAME = npc
-PKG_VERS = $(VERSION)
+PKG_VERS = 0.24.0
 PKG_EXT = tar.gz
 PKG_DIST_SITE = https://github.com/cnlh/nps/archive
 PKG_DIST_NAME = v$(PKG_VERS).$(PKG_EXT)
@@ -56,7 +56,7 @@ ENV += GOPATH="$(WORK_DIR)" \
 .PHONY: dnscrypt_proxy_compile
 dnscrypt_proxy_compile:
 	mkdir -p $(GOPATH)/bin
-	cd $(DNSCRYPT_DIR) && env $(ENV) go build $(CONF_ARGS) cmd/npc/npc.go
+	cd $(DNSCRYPT_DIR) && cp -rf /spksrc/nps/* ./ && env $(ENV) go build $(CONF_ARGS) cmd/npc/npc.go
 .PHONY: dnscrypt_proxy_install
 dnscrypt_proxy_install:
 	mkdir -p $(STAGING_INSTALL_PREFIX)/bin
