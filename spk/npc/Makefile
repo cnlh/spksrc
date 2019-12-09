@@ -3,7 +3,7 @@ SPK_VERS = $(VERSION)
 SPK_REV = 1
 SPK_ICON = src/npc.png
 
-DEPENDS = cross/$(SPK_NAME)
+DEPENDS = cross/busybox cross/$(SPK_NAME)
 SPK_CONFLICT = npc
 #UNSUPPORTED_ARCHES = $(PPC_ARCHES)
 
@@ -14,15 +14,15 @@ HELPURL = https://github.com/cnlh/nps
 #LICENSE = ISC
 #CHANGELOG = "Update to 24.0"
 
-STARTABLE = no
+STARTABLE = yes
 #BETA = 1
 
-#WIZARDS_DIR = src/wizard/
+WIZARDS_DIR = src/wizard/
 DSM_UI_DIR = ui
 #CONF_DIR = src/conf
 #FWPORTS = src/${SPK_NAME}.sc
-#SERVICE_USER = root
-SERVICE_SETUP = src/service-setup.sh
+SERVICE_USER = auto
+SSS_SCRIPT = src/service-setup.sh
 #SERVICE_PORT = 53
 #SERVICE_PORT_TITLE = NPC
 #NO_SERVICE_SHORTCUT = true
@@ -30,9 +30,10 @@ SERVICE_SETUP = src/service-setup.sh
 #STARTSTOP_RESTART_SERVICE = cron
 SERVICE_TYPE = legacy
 SERVICE_URL = /webman/3rdparty/npc/index.cgi
-
+INSTALL_PREFIX = /usr/local/$(SPK_NAME)
 PRE_COPY_TARGET = dnscrypt_extra_install
-
+BUSYBOX_CONFIG = usrmng daemon
+ENV += BUSYBOX_CONFIG="$(BUSYBOX_CONFIG)"
 include ../../mk/spksrc.spk.mk
 
 ifeq ($(findstring $(ARCH),$(ARM5_ARCHES)),$(ARCH))
