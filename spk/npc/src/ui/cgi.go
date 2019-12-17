@@ -241,7 +241,6 @@ func main() {
 		}
 		rootDir = pwd + "/"
 	} else { // production environment
-		auth()
 		rootDir = "/var/packages/npc/target/conf/"
 	}
 	// Retrieve Form Values
