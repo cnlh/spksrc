@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM golang:buster
 MAINTAINER SynoCommunity <https://synocommunity.com>
 
 ENV LANG C.UTF-8
