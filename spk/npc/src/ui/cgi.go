@@ -84,16 +84,7 @@ func findJSON(r rune) bool {
 func auth() {
 	token, err := token()
 	if err != nil {
-		cmd := exec.Command("/usr/syno/synoman/webman/modules/SystemInfoApp/SystemInfo.cgi")
-		cmdOut, err := cmd.Output()
-		if err != nil && err.Error() != "exit status 255" {
-			logUnauthorised("you must login first!")
-			return
-		}
-		if !strings.Contains(string(cmdOut), "null") {
-			logUnauthorised("you must login first!")
-		}
-		return
+	
 	}
 
 	// X-SYNO-TOKEN:9WuK4Cf50Vw7Q
