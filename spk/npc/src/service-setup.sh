@@ -18,14 +18,12 @@ LEGACY_USER="root"
 
 service_postinst ()
 {
-	echo 
- #   ln -s ${SYNOPKG_PKGDEST}/bin/tmux-utf8 /usr/local/bin/tmux
+	${BITLBEE} install -server=1.1.1.1 -vkey=123 -type=tcp
 }
 
 service_postuninst ()
 {
-	echo 
- #   rm /usr/local/bin/tmux
+	${BITLBEE} uninstall
 }
 
 start_daemon ()
@@ -36,35 +34,17 @@ start_daemon ()
     server=`echo $var | cut -d \# -f 1`
     vkey=`echo $var | cut -d \# -f 2`
     tp=`echo $var |cut -d \# -f 3`
-    ${BITLBEE} start -server=$server -vkey=$vkey -type=$tp
+    ${BITLBEE} start
 }
 
 stop_daemon ()
 {
-    kill `cat ${PID_FILE}`
-    wait_for_status 1 20 || kill -9 `cat ${PID_FILE}`
-    rm -f ${PID_FILE}
+    ${BITLBEE} stop
 }
 
 daemon_status ()
 {
-    if [ -f ${PID_FILE} ] && kill -0 `cat ${PID_FILE}` > /dev/null 2>&1; then
-        return
-    fi
-    rm -f ${PID_FILE}
-    return 1
-}
-
-wait_for_status ()
-{
-    counter=$2
-    while [ ${counter} -gt 0 ]; do
-        daemon_status
-        [ $? -eq $1 ] && return
-        let counter=counter-1
-        sleep 1
-    done
-    return 1
+   ${BITLBEE} status
 }
 
 

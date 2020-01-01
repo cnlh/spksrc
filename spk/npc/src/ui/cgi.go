@@ -262,7 +262,11 @@ func main() {
 			if *dev {
 				cmd = exec.Command("/Users/liuhe/go/src/github.com/cnlh/nps/npc", "restart", "-server="+server, "-vkey="+vkey, "-type="+tp)
 			} else {
-				cmd = exec.Command("/var/packages/npc/target/bin/npc", "restart", "-server="+server, "-vkey="+vkey, "-type="+tp)
+				cmd = exec.Command("/var/packages/npc/target/bin/npc", "uninstall")
+				cmd.Run()
+				cmd = exec.Command("/var/packages/npc/target/bin/npc", "install", "-server="+server, "-vkey="+vkey, "-type="+tp)
+				cmd.Run()
+				cmd = exec.Command("/var/packages/npc/target/bin/npc", "start")
 			}
 			saveFile("config.conf", server+"#"+vkey+"#"+tp)
 			cmd.Run()
