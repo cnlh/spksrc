@@ -262,14 +262,14 @@ func main() {
 			if *dev {
 				cmd = exec.Command("/Users/liuhe/go/src/github.com/cnlh/nps/npc", "restart", "-server="+server, "-vkey="+vkey, "-type="+tp)
 			} else {
-				cmd = exec.Command("/var/packages/npc/target/bin/npc", "uninstall")
+				cmd = exec.Command("killall","npc")
 				cmd.Run()
-				cmd = exec.Command("/var/packages/npc/target/bin/npc", "install", "-server="+server, "-vkey="+vkey, "-type="+tp)
-				cmd.Run()
-				cmd = exec.Command("/var/packages/npc/target/bin/npc", "start")
+				cmd = exec.Command("nohup","/var/packages/npc/target/bin/npc", "-server="+server, "-vkey="+vkey, "-type="+tp,"&")
+			//	cmd.Run()
+			//	cmd = exec.Command("sudo","/var/packages/npc/target/bin/npc", "start")
 			}
 			saveFile("config.conf", server+"#"+vkey+"#"+tp)
-			cmd.Run()
+			cmd.Start()
 			fmt.Print("Status: 200 OK\r\nContent-Type: text/html; charset=utf-8\r\n\r\n修改成功，将自动重启npc，无需其他操作")
 			return
 		}

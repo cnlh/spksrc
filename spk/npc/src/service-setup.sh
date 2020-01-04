@@ -15,10 +15,14 @@ PID_FILE="/tmp/npc.pid"
 SC_USER="root"
 LEGACY_USER="root"
 #USER="$([ "${BUILDNUMBER}" -ge "7321" ] && echo -n ${SC_USER} || echo -n ${LEGACY_USER})"
-
-service_postinst ()
+service_prestart ()
 {
-	${BITLBEE} install -server=1.1.1.1 -vkey=123 -type=tcp
+	chown root:root "${INSTALL_DIR}/ui/index.cgi"
+}
+service_postinst ()
+{	
+	chown root:root "${INSTALL_DIR}/ui/index.cgi"	
+#	${BITLBEE} install -server=1.1.1.1 -vkey=123 -type=tcp
 }
 
 service_postuninst ()
@@ -34,12 +38,12 @@ start_daemon ()
     server=`echo $var | cut -d \# -f 1`
     vkey=`echo $var | cut -d \# -f 2`
     tp=`echo $var |cut -d \# -f 3`
-    ${BITLBEE} start
+    nohup ${BITLBEE}  -server=$server -vkey=$vkey -type=$tp &
 }
 
 stop_daemon ()
 {
-    ${BITLBEE} stop
+    killall npc
 }
 
 daemon_status ()
@@ -50,24 +54,24 @@ daemon_status ()
 
 case $1 in
     start)
-        if daemon_status; then
-            echo ${DNAME} is already running
-            exit 0
-        else
-            echo Starting ${DNAME} ...
+#        if daemon_status; then
+#            echo ${DNAME} is already running
+#            exit 0
+#        else
+#            echo Starting ${DNAME} ...
             start_daemon
-            exit $?
-        fi
+#            exit $?
+#        fi
         ;;
     stop)
-        if daemon_status; then
-            echo Stopping ${DNAME} ...
+#        if daemon_status; then
+#            echo Stopping ${DNAME} ...
             stop_daemon
-            exit $?
-        else
-            echo ${DNAME} is not running
-            exit 0
-        fi
+#            exit $?
+#        else
+#            echo ${DNAME} is not running
+#            exit 0
+#        fi
         ;;
     restart)
         stop_daemon
