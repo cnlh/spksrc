@@ -49,7 +49,8 @@ CONF_ARGS = -ldflags="-s -w"
 ENV += GOPATH="$(WORK_DIR)" \
 	GOOS=linux \
 	GOARCH="$(GO_ARCH)" \
-	CGO_ENABLED=0 \
+ 	CGO_ENABLED=0 \
+	GOROXY=direct \
 	PATH=$(WORK_DIR)/../../../native/go/work-native/go/bin/:$$PATH \
 	 GOPROXY=https://goproxy.cn/\
 
