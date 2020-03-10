@@ -52,7 +52,6 @@ ENV += GOPATH="$(WORK_DIR)" \
  	CGO_ENABLED=0 \
 	GOROXY=direct \
 	PATH=$(WORK_DIR)/../../../native/go/work-native/go/bin/:$$PATH \
-	 GOPROXY=https://goproxy.cn/\
 
 .PHONY: dnscrypt_proxy_compile
 dnscrypt_proxy_compile:
